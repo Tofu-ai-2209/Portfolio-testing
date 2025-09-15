@@ -521,17 +521,17 @@ button {
 .app_icon {
     width: 100%;
     margin: 0 auto;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: left;
     justify-content: center;
 }
 
 .app_icon_1 {
     width: 100%;
     margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    text-align: right;
+    align-items: right;
+    justify-content: right;
     display: none;
 }
 
@@ -545,6 +545,7 @@ button {
 
 .box_main:hover .app_icon_1 {
     display: block;
+    background-color: #0fbdd7;
 }
 
 .box_main:hover .app_icon {
@@ -744,9 +745,26 @@ button {
     padding-top: 150px;
 }
 
-.blog_box {
+.blog_box1 {
     width: 100%;
-    background-color: #ffffff;
+    background-color: hsl(100, 93%, 79%);
+    box-shadow: 0px 0px 20px 0px;
+    padding: 0px 0px 20px 0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.blog_box2 {
+    width: 100%;
+    background-color: hsl(262, 100%, 66%);
+    box-shadow: 0px 0px 20px 0px;
+    padding: 0px 0px 20px 0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.blog_box3 {
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0, 100%, 61%);
     box-shadow: 0px 0px 20px 0px;
     padding: 0px 0px 20px 0px;
     border-bottom-right-radius: 5px;
@@ -755,24 +773,25 @@ button {
 
 .blog_img {
     width: 100%;
-    background-image: url(../images/blog-img1.png);
-    height: auto;
+    background-image: url(../../Image/WhatsApp\ Image\ 2025-06-20\ at\ 17.17.23_8d151471.jpg);
+    height: 200px;
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
 .blog_img_2 {
     width: 100%;
-    background-image: url(../images/blog-img2.png);
-    height: auto;
+    background-image: url(../images/Korea\ ASEAN\ Digital\ Academy\ \(4\).png);
+    height: 200px;
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
 .blog_img_3 {
     width: 100%;
-    background-image: url(../images/blog-img3.png);
-    height: auto;
+    background-image: url(../../Image/06577802-0298-4667-93bd-2f6b165e8c8e.jpg);
+    object-fit: contain;
+    height: 300px;
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -785,7 +804,7 @@ button {
     text-align: center;
     text-transform: uppercase;
     padding: 14px 0px;
-    background-color: #f5c729;
+    background-color: #29f5bf;
 }
 
 .prep_text {
