@@ -1,0 +1,269 @@
+<!--
+AI PROMPT (use this if you want an AI to generate or expand the website):
+"Create a responsive, accessible, and SEO-friendly single-page blog website about safari travel written in clean HTML and CSS. Include: a top navigation, a hero section with a large background image and headline, a featured posts carousel or grid, blog post excerpts with read-more links, an image gallery (lightbox optional), an about section, contact form, footer with social links, and basic meta tags for SEO. Use semantic HTML5, mobile-first responsive design, good typography, and comments so I can customize colors, fonts, and content. Include simple CSS (no frameworks) and a small JavaScript snippet for a mobile menu toggle and an image modal."
+
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safari Trails — Blog about Safari Adventures</title>
+  <meta name="description" content="Safari Trails: Stories, tips, and guides for unforgettable safari adventures. Learn where to go, what to pack, and how to spot wildlife safely.">
+  <meta name="author" content="Your Name">
+  <!-- Fallback font stack; replace with Google Fonts if desired -->
+  <style>
+    :root{
+      --bg:#fff;
+      --muted:#6b7280;
+      --accent:#1f6feb;
+      --card:#f8fafc;
+      --max-width:1100px;
+      --radius:12px;
+      --gap:1rem;
+    }
+    *{box-sizing:border-box}
+    body{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#0b1220; line-height:1.6}
+    a{color:var(--accent); text-decoration:none}
+    header{background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.1));}
+    .container{max-width:var(--max-width); margin:0 auto; padding:1rem}
+
+    /* Navigation */
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:700}
+    .brand img{width:44px; height:44px; border-radius:8px; object-fit:cover}
+    nav ul{list-style:none; display:flex; gap:1rem; margin:0; padding:0}
+    .menu-toggle{display:none}
+
+    /* Hero */
+    .hero{background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=60'); background-size:cover; background-position:center; color:white; padding:4rem 0; border-bottom-left-radius:18px; border-bottom-right-radius:18px}
+    .hero-inner{background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)); padding:2rem; border-radius:12px}
+    .hero h1{font-size:clamp(1.6rem,4vw,2.8rem); margin:0 0 .5rem}
+    .hero p{margin:0 0 1rem; color:rgba(255,255,255,0.9)}
+    .cta{display:inline-block; padding:.6rem 1rem; background:var(--accent); color:white; border-radius:999px}
+
+    /* Layout */
+    .grid{display:grid; grid-template-columns:1fr; gap:var(--gap); margin-top:1.25rem}
+    @media(min-width:900px){
+      .grid{grid-template-columns:2fr 1fr}
+      .menu-toggle{display:none}
+      nav ul{gap:1.25rem}
+    }
+
+    .card{background:var(--card); padding:1rem; border-radius:var(--radius)}
+    .post{display:grid; grid-template-columns:120px 1fr; gap:1rem; align-items:start}
+    .post img{width:100%; height:100%; object-fit:cover; border-radius:8px}
+    .post h3{margin:.1rem 0}
+    .meta{color:var(--muted); font-size:.9rem}
+
+    /* Sidebar */
+    .sidebar .search{display:flex; gap:.5rem}
+    .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
+    .tag{background:#eef2ff; padding:.35rem .6rem; border-radius:999px; font-size:.85rem}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem}
+    .gallery img{width:100%; height:8rem; object-fit:cover; border-radius:8px; cursor:pointer}
+    @media(max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)} .post{grid-template-columns:1fr}}
+
+    footer{padding:2rem 0; color:var(--muted)}
+
+    /* Mobile nav */
+    @media(max-width:899px){
+      nav ul{display:none}
+      .menu-toggle{display:block; background:transparent; border:0; font-size:1.1rem}
+      .mobile-open nav ul{display:flex; flex-direction:column; gap:.5rem; margin-top:.75rem}
+    }
+
+    /* Simple modal for images */
+    .modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.8); gap:1rem; padding:2rem; visibility:hidden; opacity:0; transition:opacity .18s}
+    .modal.open{visibility:visible; opacity:1}
+    .modal img{max-width:90%; max-height:80%; border-radius:8px}
+    .close-btn{position:absolute; top:1rem; right:1rem; background:transparent; border:0; color:white; font-size:1.5rem}
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="nav">
+        <div class="brand">
+          <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=200&q=60" alt="logo">
+          <span>Safari Trails</span>
+        </div>
+        <button class="menu-toggle" aria-expanded="false">☰</button>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#posts">Posts</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <h1>Safari Trails — Wild Stories & Practical Tips</h1>
+      <p>Explore national parks, learn wildlife spotting techniques, packing lists, and responsible safari travel guides from experienced guides and travelers.</p>
+      <a class="cta" href="#posts">Read the latest posts</a>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="grid">
+      <!-- Main column: posts -->
+      <section>
+        <div class="card">
+          <h2 id="posts">Featured posts</h2>
+          <!-- Example post excerpt -->
+          <article class="post" aria-labelledby="post-1-title">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60" alt="Elephant in savanna">
+            <div>
+              <h3 id="post-1-title">How to Spot Big Five: Tips from a Ranger</h3>
+              <p class="meta">By: Alex Traveler • Aug 25, 2025 • 6 min read</p>
+              <p>Learn where to look, what time of day to go, and how to get the best photos while keeping a safe distance on safari.</p>
+              <p><a href="#">Read more →</a></p>
+            </div>
+          </article>
+
+          <article class="post" aria-labelledby="post-2-title" style="margin-top:1rem">
+            <img src="https://images.unsplash.com/photo-1519035671396-129d4f5b8b0b?auto=format&fit=crop&w=800&q=60" alt="Jeep on safari">
+            <div>
+              <h3 id="post-2-title">What to Pack for a Week-Long Safari</h3>
+              <p class="meta">By: N. Guide • Jul 14, 2025 • 4 min read</p>
+              <p>From neutral clothing to insect repellent — a practical checklist to make your trip comfortable and safe.</p>
+              <p><a href="#">Read more →</a></p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h2>Latest stories</h2>
+          <!-- List of short posts -->
+          <div style="display:flex;flex-direction:column;gap:.75rem">
+            <div class="post">
+              <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=60" alt="lion closeup">
+              <div>
+                <h3>Photographing Lions: Ethics & Techniques</h3>
+                <p class="meta">May 2, 2025</p>
+              </div>
+            </div>
+            <div class="post">
+              <img src="https://images.unsplash.com/photo-1549887534-0adf2aa2a6b6?auto=format&fit=crop&w=800&q=60" alt="birds flying">
+              <div>
+                <h3>Birdwatching on Safari — Rare Finds</h3>
+                <p class="meta">Apr 19, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="card">
+          <h3>Search</h3>
+          <form class="search" onsubmit="event.preventDefault();alert('Search not implemented in demo')">
+            <input aria-label="search posts" placeholder="Search posts...">
+            <button type="submit">Go</button>
+          </form>
+
+          <h3 style="margin-top:1rem">Popular tags</h3>
+          <div class="tags">
+            <span class="tag">#wildlife</span>
+            <span class="tag">#safaritips</span>
+            <span class="tag">#packing</span>
+            <span class="tag">#photography</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>About the author</h3>
+          <p class="meta">Hi — I'm Tessa, a wildlife guide and travel writer. I write practical tips and personal stories from over 10 years guiding safaris across Africa.</p>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>Gallery</h3>
+          <div id="gallery" class="gallery">
+            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=60" alt="giraffe" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1471115853179-bb1d604434e0?auto=format&fit=crop&w=800&q=60" alt="zebra" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60" alt="cheetah" tabindex="0">
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="margin-top:1.25rem">
+      <div class="card">
+        <h2>About Safari Trails</h2>
+        <p>Safari Trails is a travel blog dedicated to ethical wildlife tourism, practical safari planning, and conservation-aware travel. We aim to inspire safe, respectful, and memorable experiences in the wild.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:1.25rem">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Questions? Want to contribute? Drop a message below.</p>
+        <form onsubmit="event.preventDefault(); alert('This demo form does not send messages — implement with server code or email API')">
+          <div style="display:flex;flex-direction:column;gap:.5rem;max-width:560px">
+            <input placeholder="Your name" required>
+            <input placeholder="Your email" type="email" required>
+            <textarea placeholder="Your message" rows="5" required></textarea>
+            <button type="submit">Send message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <div>
+        <strong>Safari Trails</strong>
+        <div class="meta">© 2025 • All rights reserved</div>
+      </div>
+      <div>
+        <a href="#">Instagram</a> • <a href="#">Facebook</a> • <a href="#">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Image modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <button class="close-btn" aria-label="Close">✕</button>
+    <img alt="enlarged image">
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const body = document.body;
+    toggle && toggle.addEventListener('click', ()=>{
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      body.classList.toggle('mobile-open');
+    });
+
+    // Simple image modal
+    const modal = document.getElementById('modal');
+    const modalImg = modal.querySelector('img');
+    const closeBtn = modal.querySelector('.close-btn');
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        modalImg.src = img.src;
+        modalImg.alt = img.alt || '';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      });
+    });
+    closeBtn.addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); } });
+  </script>
+
+</body>
+</html>
