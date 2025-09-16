@@ -231,7 +231,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../../Image/bg-tofu.jpg);
     height: auto;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -282,24 +282,25 @@ button {
 .banner_section {
     width: 100%;
     float: left;
-    padding: 0px 0px 220px 0px;
+    padding: 0px 0px 10px 0px;
 }
 
 .banner_taital_main {
     width: 100%;
-    float: left;
-    padding-left: 100px;
+    float: center;
+    padding-left: 50px;
     padding-top: 100px;
 }
 
 .banner_taital {
-    width: 100%;
+    width: 100px; 
     float: left;
-    font-size: 60px;
-    color: #fefefd;
+    font-size: 50px;
+    color: #ffffff;
     font-weight: bold;
-    padding-bottom: 0px;
+    padding-bottom: 0%;
     line-height: 70px;
+    padding-top: 10px;
 }
 
 .banner_text {
@@ -307,6 +308,7 @@ button {
     float: left;
     font-size: 24px;
     color: #fefefd;
+    padding-top: 0px;
 }
 
 .social_icon {
@@ -367,7 +369,7 @@ button {
     width: 90px;
     height: 90px;
     transform: translate(-50%, -50%);
-    background-color: #f5c729;
+    background-color: #3ba3ff;
     border-radius: 100%;
     animation: fadeEffect 1.3s infinite ease;
     box-shadow: 0px 0px 10px 0px;
@@ -490,7 +492,7 @@ button {
     width: 100%;
     float: left;
     font-size: 40px;
-    color: #f5c729;
+    color: #3ba3ff;
     font-weight: bold;
 }
 
@@ -512,7 +514,7 @@ button {
 .box_main {
     width: 100%;
     border-radius: 100%;
-    border: 6px solid #f5c729;
+    border: 6px solid #3ba3ff;
     height: auto;
     padding: 70px 0px;
     box-shadow: 0px 0px 60px 0px #f0f0ef;
@@ -521,17 +523,17 @@ button {
 .app_icon {
     width: 100%;
     margin: 0 auto;
-    text-align: left;
-    align-items: left;
+    text-align: center;
+    align-items: center;
     justify-content: center;
 }
 
 .app_icon_1 {
     width: 100%;
     margin: 0 auto;
-    text-align: right;
-    align-items: right;
-    justify-content: right;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     display: none;
 }
 
@@ -545,7 +547,6 @@ button {
 
 .box_main:hover .app_icon_1 {
     display: block;
-    background-color: #0fbdd7;
 }
 
 .box_main:hover .app_icon {
